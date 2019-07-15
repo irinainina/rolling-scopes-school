@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Should be render correctly 1`] = `"<div class=\\"search\\"><input autofocus=\\"\\" placeholder=\\"Awesome Javascript\\"><button></button></div><div class=\\"container\\"><div class=\\"items\\"></div></div><div class=\\"pagination\\"><div class=\\"colorpicker\\"></div></div>"`;
+
+exports[`render is a function for render HTML Should be render correctly 1`] = `"<div class=\\"search\\"><input autofocus=\\"\\" placeholder=\\"Awesome Javascript\\"><button></button></div><div class=\\"container\\"><div class=\\"items\\"></div></div><div class=\\"pagination\\"><div class=\\"colorpicker\\"></div></div>"`;
