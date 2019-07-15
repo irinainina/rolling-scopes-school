@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Piskel-clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header class="menu">
+    <div class="container menu-container">
+      <nav>
+        <a href="#">
+          <img src="assets/logo.png" alt="logo" class="logo">
+        </a>
+        <p class="name">New piskel</p>
+        <button class="btn-create">Create sprite</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="tool-container">
+        <div class="tools">
+          <div class="sizes">
+            <label>
+              <input type="radio" name="size" value="1" checked>
+              <span></span>
+            </label>
+            <label>
+              <input type="radio" name="size" value="2">
+              <span></span>
+            </label>
+            <label>
+              <input type="radio" name="size" value="3">
+              <span></span>
+            </label>
+            <label>
+              <input type="radio" name="size" value="4">
+              <span></span>
+            </label>
+            <div class="tooltip">
+              <p>Pen size from 1px to 4px
+              </p>
+            </div>
+          </div>
+
+          <label class="pen">
+            <input type="radio" name="tool" value="pen" checked>
+            <span></span>
+            <div class="tooltip">
+              <p>Pen tool
+                <span class="tooltip-shortcut">(P)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="mirror">
+            <input type="radio" name="tool" value="mirror">
+            <span></span>
+            <div class="tooltip">
+              <p>Vertical Mirror pen
+                <span class="tooltip-shortcut">(V)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Use horizontal axis
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Use horizontal and vertical axis
+              </p>
+            </div>
+          </label>
+
+          <label class="bucket">
+            <input type="radio" name="tool" value="bucket">
+            <span></span>
+            <div class="tooltip">
+              <p>Paint bucket tool
+                <span class="tooltip-shortcut">(B)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="eraser">
+            <input type="radio" name="tool" value="eraser">
+            <span></span>
+            <div class="tooltip">
+              <p>Eraser tool
+                <span class="tooltip-shortcut">(E)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="brush">
+            <input type="radio" name="tool" value="brush">
+            <span></span>
+            <div class="tooltip">
+              <p>Paint all pixels of the same color
+                <span class="tooltip-shortcut">(A)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Apply to all layers
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Apply to all frames
+              </p>
+            </div>
+          </label>
+
+          <label class="stroke">
+            <input type="radio" name="tool" value="stroke">
+            <span></span>
+            <div class="tooltip">
+              <p>Stroke tool
+                <span class="tooltip-shortcut">(L)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="rectangle">
+            <input type="radio" name="tool" value="rectangle">
+            <span></span>
+            <div class="tooltip">
+              <p>Rectangle tool
+                <span class="tooltip-shortcut">(R)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Keep 1 to 1 ratio
+              </p>
+            </div>
+          </label>
+
+          <label class="circle">
+            <input type="radio" name="tool" value="circle">
+            <span></span>
+            <div class="tooltip">
+              <p>Circle tool
+                <span class="tooltip-shortcut">(C)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Keep 1 to 1 ratio
+              </p>
+            </div>
+          </label>
+
+          <label class="move1">
+            <input type="radio" name="tool" value="move">
+            <span></span>
+            <div class="tooltip">
+              <p>Move tool
+                <span class="tooltip-shortcut">(M)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Apply to all layers
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Apply to all frames
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">ALT</span> Wrap canvas borders
+              </p>
+            </div>
+          </label>
+
+          <label class="color-picker">
+            <input type="radio" name="tool" value="color-picker">
+            <span></span>
+            <div class="tooltip">
+              <p>Color picker
+                <span class="tooltip-shortcut">(O)</span>
+              </p>
+            </div>
+          </label>
+
+          <div class="colors">
+            <input type="color" class="active-color" value="#000000">
+            <div class="rotate"></div>
+            <input type="color" class="prev-color" value="#ffd700">
+          </div>
+        </div>
+        <div class="previews">
+          <ul class="previews-list">
+            <li class="preview-container">
+              <div class="preview preview-active">
+                  <canvas class="canvas2" id="canvas2" width="32" height="32"></canvas>
+                  <span class="preview-btn number">1</span>
+                  <button class="preview-btn delete"></button>
+                  <button class="preview-btn copy"></button>
+                  <button class="preview-btn move"></button>
+              </div>
+            </li>
+          </ul>
+          <button class="add-frame">
+            <p>Add new frame</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="main-container">
+        <canvas class="canvas" id="canvas" width="32" height="32"></canvas>
+      </div>
+
+      <div class="layer-container">
+        <canvas class="layer" width="32" height="32"></canvas>
+        <button class="layer-btn"></button>
+        <div class="change-fps">
+          <p class="fps-value">12</p>
+          <p>FPS</p>
+          <input class="range-fps" type="range" min="1" max="24" step="1" value="12">
+        </div>
+
+        <p class="resize-title">Resize</p>
+        <div class="resize-container">
+          <label class="resize-item">
+            <input type="radio" name="resize" value="32" checked>
+            <p>Width<span> 32 </span>px</p>
+            <p>Height<span> 32 </span>px</p>
+            <span class="btn-resize"></span>
+          </label>
+          <label class="resize-item">
+            <input type="radio" name="resize" value="64">
+            <p>Width<span> 64 </span>px</p>
+            <p>Height<span> 64 </span>px</p>
+            <span class="btn-resize"></span>
+          </label>
+          <label class="resize-item">
+            <input type="radio" name="resize" value="128">
+            <p>Width<span> 128 </span>px</p>
+            <p>Height<span> 128 </span>px</p>
+            <span class="btn-resize"></span>
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
