@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="google-signin-client_id" content="345168571290-gic51upkjdn53q76arqe2fo18rec3n1s.apps.googleusercontent.com">
   <title>Piskel-clone</title>
   <link rel="stylesheet" href="style.css">
@@ -10,6 +11,7 @@
 </head>
 
 <body>
+ <div class="app-container">
   <header class="menu">
     <div class="container menu-container">
       <nav>
@@ -133,9 +135,6 @@
               <p>Stroke tool
                 <span class="tooltip-shortcut" data-tool="stroke">(L)</span>
               </p>
-              <p class="tooltip-descriptor">
-                <span class="tooltip-descriptor-button">SHIFT</span>Hold SHIFT to draw straight line
-              </p>
             </div>
           </label>
 
@@ -248,7 +247,7 @@
           </label>
 
           <div class="colors">
-            <input type="color" class="active-color" value="#006666">
+            <input type="color" class="active-color" value="#006060">
             <div class="rotate"></div>
             <input type="color" class="prev-color" value="#ffd700">
           </div>
@@ -291,7 +290,7 @@
         <div class="change-fps">
           <p class="fps-value">12</p>
           <p>FPS</p>
-          <input class="range-fps" type="range" min="1" max="24" step="1" value="12">
+          <input class="range-fps" type="range" min="0" max="24" step="1" value="12">
         </div>
 
         <div class="layer-management">
@@ -347,11 +346,12 @@
             <div class="save-container">
               <span class="btn-save save-gif">.gif</span>
               <span class="btn-save save-apng">.apng</span>
-              <span class="btn-save save-piskel">.pixel</span>
+              <span class="btn-save save-pixel">.pixel</span>
             </div>
             <div class="save-container">
              <span class="btn-save save-png">.png</span>
-              <span class="btn-save save-google-drive">Google drive</span>
+             <span class="btn-save save-google-drive">Google</span>
+             <span class="btn-save savepiskel">.piskel</span>
             </div>
           </div>
         </div>
@@ -361,14 +361,21 @@
         <div class="setting-opacity">
           <p class="resize-title">Import file from computer</p>
           <div class="file-upload">
-             Choose a <span>.pixel</span> file
+             Select a <span>.pixel</span> file
             <label class="import-pixel-style">
               <input type="file" class="import-pixel">
             </label>
           </div>
 
           <div class="file-upload">
-             Choose <span>.png, .jpg, .gif</span> file
+             Select a <span>.piskel</span> file
+            <label class="import-pixel-style">
+              <input type="file" class="import-piskel">
+            </label>
+          </div>
+
+          <div class="file-upload">
+             Select <span>.png, .jpg, .gif</span> file
             <label class="import-pixel-style">
               <input type="file" class="import-image">
             </label>
@@ -489,6 +496,7 @@
    </div>
   </div>
   </main>
+  </div>
   <script>
      const signInBtn = document.querySelector('.signin');
      const signOutBtn = document.querySelector('.signout');
@@ -531,6 +539,10 @@
   <script src="src/libraries/gifshot.js"></script>
   <script src="src/libraries/pako.js"></script>
   <script src="src/libraries/UPNG.js"></script>
+<!--
+  <script src="src/index.js"></script>
+ -->
   <script src="dist/app.bundle.js"></script>
+
 </body>
 </html>

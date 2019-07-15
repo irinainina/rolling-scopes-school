@@ -99,18 +99,40 @@ function currentTool() {
   return currentToolValue;
 }
 
+// disable context menu
+window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+};
+
+// get current color
+const activeColor = document.querySelector('.active-color');
+const prevColor = document.querySelector('.prev-color');
+
+// detect if the left and only the left mouse button is press
+function detectLeftButton(event) {
+  event = event || window.event;
+  if ("buttons" in event) {
+    return event.buttons == 1;
+  }
+  var button = event.which || event.button;
+  return button == 1;
+}
+
 // get current color
 function currentColor() {
-  const activeColor = document.querySelector('.active-color');
   let activeColorValue;
-  activeColorValue = activeColor.value;
+  if(detectLeftButton()) {
+    activeColorValue = activeColor.value;
+  } else {
+    activeColorValue = prevColor.value;
+  }
   return activeColorValue;
 }
 
 // change current and prev colors
 function changeColor() {
-  const activeColor = document.querySelector('.active-color');
-  const prevColor = document.querySelector('.prev-color');
   let temp;
   temp = activeColor.value;
   activeColor.value = prevColor.value;
@@ -619,7 +641,6 @@ function lighten(event) {
 // color picker - get color of pixel on canvas
 function colorPicker() {
   if (currentTool() !== 'color-picker' || !isDrawing) return;
-  const activeColor = document.querySelector('.active-color');
   const x1 = Math.floor(event.offsetX / scale());
   const y1 = Math.floor(event.offsetY / scale());
   let pixel = ctx.getImageData(x1, y1, 1, 1);
@@ -760,9 +781,12 @@ function mouseWheelHandler(e) {
   return false;
 }
 
+const mainContainer = document.querySelector('.main-container');
+mainContainer.addEventListener('mousewheel', mouseWheelHandler);
 canvas.addEventListener('mousewheel', mouseWheelHandler);
 
 canvas.addEventListener('mousemove', pen);
+canvas.addEventListener('mousedown', mirror);
 canvas.addEventListener('mousemove', mirror);
 canvas.addEventListener('mousedown', bucket);
 canvas.addEventListener('mousedown', eraser);
@@ -881,7 +905,14 @@ function moveFrame(event) {
     blockContainer.forEach(item => {
       let y = t.offsetTop + t.parentNode.offsetTop;
       let y1 = item.offsetTop;
-      if (y > y1 - 45 && y < y1 + 45) {
+
+      if(y > parent.offsetHeight) {
+        t.parentNode.appendChild(t);
+        t.style.top = '0px';
+        t.style.left = '0px'
+      }
+
+      if (y > y1 - 50 && y < y1 + 50) {
         let parent1 = item;
         let child1 = item.firstElementChild;
         let parent0 = t.parentNode;
@@ -1073,6 +1104,7 @@ function removeCanvasTemp() {
       }
     });
   styleActiveLayer();
+  drawImageActiveClickingLayer();
 }
 
 function canvasTempToFrame() {
@@ -1120,6 +1152,7 @@ function layerUp() {
       mainContainer.insertBefore(canvasTemp, prevCanvasTemp);
     }
   });
+  drawImageActiveClickingLayer();
 }
 
 // down layer when click btn-down
@@ -1142,6 +1175,7 @@ function layerDown() {
       mainContainer.insertBefore(nextCanvasTemp, canvasTemp);
     }
   });
+  drawImageActiveClickingLayer();
 }
 
 function layerManagementBtnDelegation(event) {
@@ -1189,6 +1223,7 @@ let timer;
 
 // define speed of animation layer background image
 function animationSpeed() {
+  if(rangeFPS.value == 0) return;
   let speed = 1000 / rangeFPS.value;
   return speed;
 }
@@ -1207,6 +1242,9 @@ function animationBackground() {
     clearInterval(timer);
   }
   timer = setTimeout(animationBackground, speed);
+  if(rangeFPS.value == 0) {
+    clearInterval(timer);
+  }
 }
 
 canvas.addEventListener('mouseup', animationBackground);
@@ -1309,8 +1347,8 @@ function saveImageAsPixel() {
   const pixel = `${fps}, ${size}, ${frameCount}, ${canvasUrl}, ${images}`;
   download(pixel, 'newPixel.pixel', 'pixel');
 }
-const savePiskel = document.querySelector('.save-piskel');
-savePiskel.addEventListener('click', saveImageAsPixel);
+const savePixel = document.querySelector('.save-pixel');
+savePixel.addEventListener('click', saveImageAsPixel);
 
 // open local file pixel from computer
 // http://qaru.site/questions/57624/how-to-open-a-local-disk-file-with-javascript
@@ -1348,7 +1386,6 @@ function importPixel(contents) {
     input.checked = false;
     if(input.value == saveSize) {
       input.checked = true;
-      console.log('saveSize')
     }
   });
 
@@ -1357,7 +1394,6 @@ function importPixel(contents) {
   saveCanvasImage.onload = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(saveCanvasImage, 0, 0, canvas.width, canvas.height);
-    console.log(saveCanvasImage);
     frameCreate();
     animationBackground();
   }
@@ -1427,7 +1463,7 @@ savePng.addEventListener('click', saveImageAsPng);
 const saveToGoogleDrive = (fileContent) => {
   const arrAnimationSpeed = new Array(ArrayBufferData().length);
   arrAnimationSpeed.fill(animationSpeed());
-  const imageData = UPNG.encode(ArrayBufferData(), canvas.width, canvas.height, 0, arrAnimationSpeed);
+  const imageData = UPNG.encode(ArrayBufferData(), valueImageSize(), valueImageSize(), 0, arrAnimationSpeed);
 
   var file = new Blob([imageData], { type: 'image/apng' });
   var metadata = {
@@ -1464,8 +1500,6 @@ for (let i = 0; i < resize.length; i++) {
   }
 }
 
-const activeColor = document.querySelector('.active-color');
-const prevColor = document.querySelector('.prev-color');
 activeColor.onchange = function() {
     localStorage.setItem('activeColor', activeColor.value);
   }
@@ -1542,6 +1576,115 @@ window.onload = function() {
 // clear localStorage
 const btnCreate = document.querySelector('.btn-create');
 btnCreate.onclick = function() {
-    localStorage.clear();
+  localStorage.clear();
+}
+
+const newPiskel = document.querySelector('.name');
+newPiskel.onclick = function() {
+  localStorage.clear();
+  while (parent.children.length > 1) {
+    parent.removeChild(parent.lastChild);     
+  }
+  parent.firstElementChild.firstElementChild.classList.add('preview-active');
+  const canvas2 = document.querySelector('.canvas2');
+  const ctx2 = canvas2.getContext('2d');
+  ctx2.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const ctxLayer = layer.getContext('2d');
+  ctxLayer.clearRect(0, 0, layer.width, layer.height);
+  activeColor.value = '#006060';
+  prevColor.value = '#ffd700';
+}
+
+// restore the state of elements from a piskel file
+function readPiskelFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const contents = event.target.result;
+    importDataFromPiskel(contents);
+  };
+  reader.readAsText(file);
+}
+
+function importDataFromPiskel(contents) {
+  const fps = contents.split('fps":').pop().split(',')[0];
+  const size = contents.split('height":').pop().split(',')[0];
+  const frameCount = contents.split('frameCount\\":').pop().split(',')[0];
+  const imageUrl = contents.split('base64PNG\\":\\"').pop().split('\\"')[0];
+
+  rangeFPS.value = fps;
+  const fpsValue = document.querySelector('.fps-value');
+  fpsValue.innerText = fps;
+
+  canvas.width = canvas.height = size;
+  canvas2.width = canvas2.height = size;
+  layer.width = layer.height = size;
+  const resizeInput = document.getElementsByName('resize');
+  resizeInput.forEach(input => {
+    input.checked = false;
+    if(input.value == size) {
+      input.checked = true;
+    }
+  });
+
+  const saveCanvasImage = new Image();
+  saveCanvasImage.src = imageUrl;
+  saveCanvasImage.onload = function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(saveCanvasImage, size * (frameCount - 1), 0, size, size, 0, 0, size, size);
+    frameCreate();
+    animationBackground();
   }
 
+    if(frameCount > 1) {
+    const framesParent = document.querySelector('.previews-list');
+
+    for(let i = 0; i < frameCount-1; i++) {
+      const canvas2 = framesParent.lastElementChild.firstElementChild.firstElementChild;
+      const ctx2 = canvas2.getContext('2d');
+      const framesImage = new Image();
+      framesImage.src = imageUrl;
+      framesImage.onload = function() {
+        ctx2.drawImage(saveCanvasImage, size * i, 0, size, size, 0, 0, size, size);
+      }
+      addFrame();
+    }
+  }
+}
+
+const importPiskelBtn = document.querySelector('.import-piskel');
+importPiskelBtn.addEventListener('change', readPiskelFile, false);
+
+// save image as piskel
+function saveImageAsPiskel() {
+  const fps = rangeFPS.value;
+  const height = canvas.height;
+  const width = canvas.width;
+  const frameCount = framesToImages().length;
+
+  const canvas2All = document.querySelectorAll('.canvas2');
+
+  const canvasIn = document.createElement('canvas');
+  const ctxIn = canvasIn.getContext('2d');
+  canvasIn.width = frameCount * width;
+  canvasIn.height = height;
+
+  canvas2All.forEach((canvas2, index) => {
+    ctxIn.drawImage(canvas2, width * index, 0, width, height);
+  });
+  const images = canvasIn.toDataURL('image/png;base64');
+
+  let layout = '';
+
+  for(let i = 0; i < frameCount; i++) {
+    layout += '[' + i + '],';
+  }
+
+  const piskel = `{"modelVersion":2,"piskel":{"name":"New Piskel","description":"","fps":${fps},"height":${height},"width":${width},"layers":["{\\"name\\":\\"Layer 1\\",\\"opacity\\":1,\\"frameCount\\":${frameCount},\\"chunks\\":[{\\"layout\\":[${layout.slice(0, -1)}],\\"base64PNG\\":\\"${images}\\"}]}"],"hiddenFrames":[]}}`
+  download(piskel, 'newPiskel.piskel', 'piskel');
+}
+
+const savePiskel = document.querySelector('.savepiskel');
+savePiskel.addEventListener('click', saveImageAsPiskel);
