@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-signin-client_id" content="345168571290-gic51upkjdn53q76arqe2fo18rec3n1s.apps.googleusercontent.com">
+  <title>Piskel-clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header class="menu">
+    <div class="container menu-container">
+      <nav>
+        <a href="index.html">
+          <img src="assets/img/logo.png" alt="logo" class="logo">
+        </a>
+        <p class="name">New piskel</p>
+
+        <div class="nav-buttons">
+          <a href="app.html" target="_blank">
+            <button class="btn-create">
+              Create sprite
+            </button>
+          </a>
+          <button class="btn-signin signin">
+            Sign in
+          </button>
+          <button class="btn-signin signout btn-hide">
+            <img src="" alt="" class="user-photo">
+            <p class="user-name"></p>
+            <span class="log-out"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="tool-container">
+        <div class="tools">
+          <div class="sizes">
+            <label>
+              <input type="radio" name="size" value="1" checked>
+              <span></span>
+            </label>
+            <label>
+              <input type="radio" name="size" value="2">
+              <span></span>
+            </label>
+            <label>
+              <input type="radio" name="size" value="3">
+              <span></span>
+            </label>
+            <label>
+              <input type="radio" name="size" value="4">
+              <span></span>
+            </label>
+            <div class="tooltip">
+              <p>Pen size from 1px to 4px
+              </p>
+            </div>
+          </div>
+
+          <label class="pen">
+            <input type="radio" name="tool" value="pen" checked>
+            <span></span>
+            <div class="tooltip">
+              <p>Pen tool
+                <span class="tooltip-shortcut" data-tool="pen">(P)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="mirror">
+            <input type="radio" name="tool" value="mirror">
+            <span></span>
+            <div class="tooltip">
+              <p>Vertical Mirror pen
+                <span class="tooltip-shortcut" data-tool="mirror">(V)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Use horizontal axis
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Use horizontal and vertical axis
+              </p>
+            </div>
+          </label>
+
+          <label class="bucket">
+            <input type="radio" name="tool" value="bucket">
+            <span></span>
+            <div class="tooltip">
+              <p>Paint bucket tool
+                <span class="tooltip-shortcut" data-tool="bucket">(B)</span>
+              </p>
+                <p class="tooltip-descriptor">
+                  <span class="tooltip-descriptor-button">CTRL</span>Fill all pixeles
+                </p>
+            </div>
+          </label>
+
+          <label class="brush">
+            <input type="radio" name="tool" value="brush">
+            <span></span>
+            <div class="tooltip">
+              <p>Paint all pixels of the same color
+                <span class="tooltip-shortcut" data-tool="brush">(A)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="eraser">
+            <input type="radio" name="tool" value="eraser">
+            <span></span>
+            <div class="tooltip">
+              <p>Eraser tool
+                <span class="tooltip-shortcut" data-tool="eraser">(E)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Clear all
+              </p>
+            </div>
+          </label>
+
+          <label class="stroke">
+            <input type="radio" name="tool" value="stroke">
+            <span></span>
+            <div class="tooltip">
+              <p>Stroke tool
+                <span class="tooltip-shortcut" data-tool="stroke">(L)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span>Hold SHIFT to draw straight line
+              </p>
+            </div>
+          </label>
+
+          <label class="rectangle">
+            <input type="radio" name="tool" value="rectangle">
+            <span></span>
+            <div class="tooltip">
+              <p>Rectangle tool
+                <span class="tooltip-shortcut" data-tool="rectangle">(R)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Keep 1 to 1 ratio
+              </p>
+            </div>
+          </label>
+
+          <label class="circle">
+            <input type="radio" name="tool" value="circle">
+            <span></span>
+            <div class="tooltip">
+              <p>Circle tool
+                <span class="tooltip-shortcut" data-tool="circle">(X)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">SHIFT</span> Keep 1 to 1 ratio
+              </p>
+            </div>
+          </label>
+
+          <label class="move1">
+            <input type="radio" name="tool" value="move">
+            <span></span>
+            <div class="tooltip">
+              <p>Move tool
+                <span class="tooltip-shortcut" data-tool="move">(M)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="shape">
+            <input type="radio" name="tool" value="shape">
+            <span></span>
+            <div class="tooltip">
+              <p>Shape selection
+                <span class="tooltip-shortcut" data-tool="square">(Z)</span>
+              </p>
+            </div>
+          </label>
+
+          <label class="flipflop">
+            <input type="radio" name="tool" value="flipflop">
+            <span></span>
+            <div class="tooltip">
+              <p>Flip-flop rotation
+                <span class="tooltip-shortcut" data-tool="shape">(S)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Vertically rotation
+              </p>
+            </div>
+          </label>
+
+          <label class="rotation">
+            <input type="radio" name="tool" value="rotation">
+            <span></span>
+            <div class="tooltip">
+              <p>Rotate selection
+                <span class="tooltip-shortcut" data-tool="rotation">(H)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Clockwise rotation
+              </p>
+            </div>
+          </label>
+
+          <label class="dithering">
+            <input type="radio" name="tool" value="dithering">
+            <span></span>
+            <div class="tooltip">
+              <p>Dithering tool
+                <span class="tooltip-shortcut" data-tool="dithering">(D)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Drawing in two colors
+              </p>
+            </div>
+          </label>
+
+          <label class="lighten">
+            <input type="radio" name="tool" value="lighten">
+            <span></span>
+            <div class="tooltip">
+              <p>Lighten
+                <span class="tooltip-shortcut" data-tool="lighten">(U)</span>
+              </p>
+              <p class="tooltip-descriptor">
+                <span class="tooltip-descriptor-button">CTRL</span> Darken
+              </p>
+            </div>
+          </label>
+
+          <label class="color-picker">
+            <input type="radio" name="tool" value="color-picker">
+            <span></span>
+            <div class="tooltip">
+              <p>Color picker
+                <span class="tooltip-shortcut" data-tool="color-picker">(O)</span>
+              </p>
+            </div>
+          </label>
+
+          <div class="colors">
+            <input type="color" class="active-color" value="#006666">
+            <div class="rotate"></div>
+            <input type="color" class="prev-color" value="#ffd700">
+          </div>
+          <div class="change-hotkey">
+            <div class="tooltip">
+              <p> Keyboard shortcut
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="previews">
+          <ul class="previews-list">
+            <li class="preview-container">
+              <div class="preview preview-active">
+                  <canvas class="canvas2" id="canvas2" width="32" height="32"></canvas>
+                  <span class="preview-btn number">1</span>
+                  <button class="preview-btn delete"></button>
+                  <button class="preview-btn copy"></button>
+                  <button class="preview-btn move"></button>
+              </div>
+            </li>
+          </ul>
+          <button class="add-frame">
+            <p>Add new frame</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="main-container">
+        <canvas class="canvas canvas-active" width="32" height="32"></canvas>
+      </div>
+
+      <div class="layer-container">
+       <div class="layer-wrapper">
+          <canvas class="layer" width="32" height="32"></canvas>
+          <button class="layer-btn"></button>
+        </div>
+        <div class="change-fps">
+          <p class="fps-value">12</p>
+          <p>FPS</p>
+          <input class="range-fps" type="range" min="1" max="24" step="1" value="12">
+        </div>
+
+        <div class="layer-management">
+         <div class="layer-management-btn-container">
+            <div class="layer-management-btn btn-plus">+</div>
+            <div class="layer-management-btn btn-up"></div>
+            <div class="layer-management-btn btn-down"></div>
+            <div class="layer-management-btn btn-delete"></div>
+         </div>
+         <div class="layer-management-layer-container">
+          <div class="layer-management-layer layer-management-layer-active" data-layernum="1">
+             Layer <span>1</span>
+           </div>
+         </div>
+        </div>
+
+        <div class="setting-container setting-resize-container setting-hide setting-show">
+        <div class="setting-btn setting-resize-btn btn-show"></div>
+        <div class="setting-opacity">
+          <p class="resize-title">Resize</p>
+          <div class="resize-container">
+            <label class="resize-item">
+              <input type="radio" name="resize" value="32" checked>
+              <p>Width<span> 32 </span>px</p>
+              <p>Height<span> 32 </span>px</p>
+              <span class="btn-resize"></span>
+            </label>
+            <label class="resize-item">
+              <input type="radio" name="resize" value="64">
+              <p>Width<span> 64 </span>px</p>
+              <p>Height<span> 64 </span>px</p>
+              <span class="btn-resize"></span>
+            </label>
+            <label class="resize-item">
+              <input type="radio" name="resize" value="128">
+              <p>Width<span> 128 </span>px</p>
+              <p>Height<span> 128 </span>px</p>
+              <span class="btn-resize"></span>
+            </label>
+          </div>
+          </div>
+        </div>
+
+        <div class="setting-container setting-save-container setting-hide">
+          <div class="setting-btn setting-save-btn"></div>
+          <div class="setting-none">
+            <p class="save-title">Save as...</p>
+            <div class="change-size">
+              <p class="size-value">256</p>
+              <p>px</p>
+              <input class="range-size" type="range" min="32" max="640" step="32" value="256">
+            </div>
+            <div class="save-container">
+              <span class="btn-save save-gif">.gif</span>
+              <span class="btn-save save-apng">.apng</span>
+              <span class="btn-save save-piskel">.pixel</span>
+            </div>
+            <div class="save-container">
+             <span class="btn-save save-png">.png</span>
+              <span class="btn-save save-google-drive">Google drive</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-container setting-import-container setting-hide">
+        <div class="setting-btn setting-import-btn"></div>
+        <div class="setting-opacity">
+          <p class="resize-title">Import file from computer</p>
+          <div class="file-upload">
+             Choose a <span>.pixel</span> file
+            <label class="import-pixel-style">
+              <input type="file" class="import-pixel">
+            </label>
+          </div>
+
+          <div class="file-upload">
+             Choose <span>.png, .jpg, .gif</span> file
+            <label class="import-pixel-style">
+              <input type="file" class="import-image">
+            </label>
+          </div>
+        </div>
+        </div>
+
+        <div class="canvas-size-container">
+          <p class="canvas-size">Canvas size: <span>[32x32]</span></p>
+          <p class="coordinates">Cursor position: <span></span></p>
+        </div>
+        </div>
+      </div>
+
+  <div class="change-hotkeys hide">
+    <div class="change-hotkeys-title">
+      Keyboard shortcut
+    </div>
+    <p class="inform"></p>
+    <div class="change-hotkeys-container">
+     <div class="change-hotkeys-col">
+      <div class="hotkey-item pen">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">pen</p>
+        <p class="hotkey-value">P</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item mirror">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">mirror</p>
+        <p class="hotkey-value">V</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item bucket">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">bucket</p>
+        <p class="hotkey-value">B</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item brush">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">brush</p>
+        <p class="hotkey-value">A</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item eraser">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">eraser</p>
+        <p class="hotkey-value">E</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item stroke">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">stroke</p>
+        <p class="hotkey-value">L</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item rectangle">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">rectangle</p>
+        <p class="hotkey-value">R</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item circle">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">circle</p>
+        <p class="hotkey-value">X</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+     </div>
+     <div class="change-hotkeys-col">
+      <div class="hotkey-item move1">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">move</p>
+        <p class="hotkey-value">M</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item shape">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">shape</p>
+        <p class="hotkey-value">Z</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item flipflop">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">flipflop</p>
+        <p class="hotkey-value">S</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item rotation">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">rotation</p>
+        <p class="hotkey-value">H</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item dithering">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">dithering</p>
+        <p class="hotkey-value">D</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item lighten">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">lighten</p>
+        <p class="hotkey-value">U</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+      <div class="hotkey-item color-picker">
+        <span class="hotkey-icon"></span>
+        <p class="hotkey-name">color-picker</p>
+        <p class="hotkey-value">O</p>
+        <input type="text" class="hotkey-input" placeholder="New hotkey" maxlength="1">
+      </div>
+
+      <button class="btn-hotkey">Change hotkey</button>
+      <div class="cancel"></div>
+      </div>
+   </div>
+  </div>
+  </main>
+  <script>
+     const signInBtn = document.querySelector('.signin');
+     const signOutBtn = document.querySelector('.signout');
+     const userName = document.querySelector('.user-name');
+     const userPhoto = document.querySelector('.user-photo');
+
+       function signIn () {
+        const auth2 = gapi.auth2.getAuthInstance()
+        auth2.signIn({ scope: 'https://www.googleapis.com/auth/drive' }).then(googleUser => {
+           // метод возвращает объект пользователя, где есть все необходимые нам поля
+           const profile = googleUser.getBasicProfile();
+           userName.innerText = profile.getName();
+           userPhoto.src = profile.getImageUrl();
+           signInBtn.classList.add('btn-hide');
+           signOutBtn.classList.remove('btn-hide');
+    })
+  }
+     signInBtn.addEventListener('click', signIn);
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        userName.innerText = '';
+        userPhoto.src = '';
+        signInBtn.classList.remove('btn-hide');
+        signOutBtn.classList.add('btn-hide');
+      });
+    }
+
+     signOutBtn.addEventListener('click', signOut);
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+
+  </script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+  <script src="src/libraries/download.js"></script>
+  <script src="src/libraries/gifshot.js"></script>
+  <script src="src/libraries/pako.js"></script>
+  <script src="src/libraries/UPNG.js"></script>
+  <script src="dist/app.bundle.js"></script>
+</body>
+</html>
