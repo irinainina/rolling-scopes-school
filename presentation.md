@@ -1,0 +1,3 @@
+- A link to my YouTube video: [https://youtu.be/9ClhNeyfAAM](https://youtu.be/9ClhNeyfAAM)
+- A link to my Reveal presentation: [https://irinainina.github.io/presentation/](https://irinainina.github.io/presentation/)
+- A link to the transcript of my presentation [https://github.com/irinainina/presentation/blob/gh-pages/presentation.md](https://github.com/irinainina/presentation/blob/gh-pages/presentation.md)
