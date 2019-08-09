@@ -8,3 +8,7 @@ https://github.com/rolling-scopes-school/tasks/blob/2018-Q3/tasks/presentation.m
 
 ## PR:
 https://github.com/irinainina/rolling-scopes-school/pull/4
+
+## Screenshot:
+
+ ![](https://s8.hostingkartinok.com/uploads/images/2019/05/391457c56bc5272d163f6572b2a6b8b3.png) 
