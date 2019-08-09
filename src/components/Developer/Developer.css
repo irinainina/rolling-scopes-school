@@ -1,0 +1,39 @@
+.developer-container {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.developer-container img {
+  width: 195px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px;
+  transition: .5s;
+  justify-content: space-between;
+}
+
+.developer-container:first-child img {
+  margin-left: 0;
+}
+
+.developer-container:last-child img {
+  margin-right: 0;
+}
+
+.developer-container img:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: .5s;
+}
+
+.developer-container p {
+  margin: 5px;
+}
+
+.developer-container a {
+  color: black;
+}
+
+.developer-container a:hover {
+  transition: .2s;
+  color: red;
+}

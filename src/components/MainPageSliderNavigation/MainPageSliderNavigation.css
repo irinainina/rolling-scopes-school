@@ -1,0 +1,77 @@
+
+.mainpage-navigation-container {
+  position: absolute;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 100%;
+  bottom: 0;
+  left: 0px; right: 0px;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, .6);
+  border-top: 1px solid #000;
+  height: 50px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.mainpage-navigation-container a {
+  box-sizing: border-box;
+  position: relative;
+  width: 33%;
+  padding: 0 10px;
+  color: #ccc;
+  font-size: 24px;
+  line-height: 40px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  text-overflow: clip;
+  text-align: center;
+}
+
+.mainpage-navigation-container a:hover {
+  color: #fff;
+}
+
+.mainpage-navigation-container a:first-child {
+  padding-left: 80px;
+  text-align: left;
+}
+
+.mainpage-navigation-container a:last-child {
+  padding-right: 80px;
+  text-align: right;
+}
+
+@media (max-width: 825px) {
+  .mainpage-navigation-container a:first-child {
+    padding-left: 20px;
+  }
+
+  .mainpage-navigation-container a:last-child {
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .mainpage-navigation-container a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 376px) {
+  .mainpage-navigation-container {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .mainpage-navigation-container a {
+    padding: 0 !important;
+    font-size: 18px;
+  }
+
+  a.author-day-btn-text {
+    font-size: 18px !important;
+  }
+
+}

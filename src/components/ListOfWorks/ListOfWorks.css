@@ -1,0 +1,58 @@
+MuiList-root.list-works {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.listitem-container {
+  display: flex;
+  flex-direction: row;
+  margin: 60px auto;
+  border-bottom: 1px solid #ccc !important;
+}
+
+
+.MuiListItem-button:nth-child(odd) {
+  background-color: #eceaea;
+}
+
+.MuiListItem-button:hover {
+  background-color: #c9c9c9 !important;
+}
+
+.MuiListItem-button.listitem-title {
+  background-color: #e86971;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+}
+
+.MuiListItem-button.listitem-title:hover {
+  background-color: #c84d57 !important;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+}
+
+.MuiListItem-button {
+  padding: 20px !important;
+}
+
+.MuiListItem-button .year {
+  width: 120px;
+}
+
+.MuiListItem-button .work {
+  width: calc(100% - 120px);
+}
+
+.MuiListItem-button.listitem-title .work {
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+}
+
+@media (max-width: 450px) {
+  .MuiList-root.list-works {
+    margin: 10px;
+  }
+}

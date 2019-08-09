@@ -1,0 +1,13 @@
+.map {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 550px;
+}
+
+@media (max-width: 825px) {
+  .map {
+    max-width: calc(100vw - 20px);
+    left: 10px;
+  }
+}
+

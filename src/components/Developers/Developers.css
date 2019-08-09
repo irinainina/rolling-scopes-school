@@ -1,0 +1,31 @@
+.developers-container {
+  box-sizing: border-box;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  min-height: calc(100vh - 204px);
+  padding-top: 10vh;
+  position: relative;
+}
+
+.developers-container span {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 36px;
+  display: block;
+}
+
+.developers-container h2 span {
+  margin: 20px auto 40px;
+  text-align: center;
+  font-size: 44px;
+}
+
+.developers {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 60px auto 30px;
+}

@@ -1,0 +1,119 @@
+.common-page {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin: 40px auto  80px;
+  padding: 40px;
+  border: 1px solid #ccc;
+}
+
+.common-page .avatar-container {
+  width: 280px;
+  height: 280px;
+  margin: 0;
+  margin-right: 60px;
+}
+
+.common-page .avatar-container img {
+  width: 280px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+}
+
+.common-page h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.common-page .description {
+  justify-content: flex-start;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20px;
+}
+
+.common-page .description p {
+  margin: 15px 0;
+}
+
+.common-page .years,
+.common-page .birth-place {
+  display: none;
+}
+
+.MuiButton-root.MuiButton-contained {
+  padding: 0;
+  margin-left: 16px;
+}
+
+.read-more-button {
+  display: inline-block;
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 45px;
+  border: none;
+}
+
+.MuiButton-contained {
+  border-radius: 3px;
+  border-bottom: none;
+  background: linear-gradient(to top, #c84d57, #e86971);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  outline: none;
+  color: #fff !important;
+  box-shadow: none;
+  transition: .3s;
+}
+
+.MuiButton-contained:hover {
+  background: linear-gradient(to right, #c84d57, #c84d57);
+  transition: .3s;
+}
+
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .common-page {
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    width: auto;
+    margin: 40px 20px 80px;
+    padding: 20px 20px 60px;
+  }
+
+  .common-page .avatar-container {
+    margin-right: 0px;
+  }
+
+  .common-page .description {
+    padding: 20px;
+    padding-left: 20px;
+    text-align: center;
+  }
+
+  .common-page h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .read-more-button {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .read-more-button {
+    font-size: 20px;
+  }
+}

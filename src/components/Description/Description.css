@@ -1,0 +1,56 @@
+.description {
+  max-width: 745px;
+  margin: 20px 0 60px 0;
+  padding: 20px 0 0 60px;
+}
+
+.description h1 {
+  font-size: 44px;
+}
+
+.description p {
+  margin: 15px 15px 15px 0;
+}
+
+.occupation {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.years,
+.birth-place {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.years span,
+.birth-place span {
+  font-weight: 400;
+}
+
+@media (max-width: 1100px){
+  .description {
+    max-width: 800px;
+    margin: 20px auto 60px;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px){
+  .description {
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .description h1 {
+    font-size: 2em;
+  }
+
+  .occupation,
+  .years,
+  .birth-place{
+    font-size: 24px;
+  }
+}

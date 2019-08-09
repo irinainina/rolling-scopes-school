@@ -1,0 +1,125 @@
+.search-container {
+  position: absolute;
+  top: 0; left: 0;right: 0;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 580px;
+  margin-top: -60px;
+}
+
+.search-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0;
+  width: 80%;
+  padding: 15px 25px;
+  max-width: 1200px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .35);
+}
+
+.search-input {
+  width: auto;
+  height: 25px;
+  margin: 10px 20px;
+  padding: 5px 30px;
+  flex-grow: 1;
+  border-radius: 2px;
+}
+
+.search-panel label {
+  font-size: 20px;
+}
+
+.MuiButtonBase-root.btn-search {
+  align-content: center;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 5px 35px 5px 10px;
+  margin: 10px;
+  border-radius: 2px;
+  border-bottom: none;
+  background: linear-gradient(to top, #c84d57, #e86971);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  outline: none;
+  border: none;
+  transition: .3s;
+}
+
+.MuiButton-contained:hover {
+  background: linear-gradient(to right, #c84d57, #c84d57);
+  transition: .3s;
+}
+
+.btn-search svg {
+  padding-right: 10px;
+}
+
+
+@media (max-width: 1000px){
+  .search-input {
+    display: block;
+  }
+
+  .search-panel label {
+    text-align: center;
+  }
+
+  .btn-search {
+    width: 220px;
+  }
+
+}
+
+@media (max-width: 725px){
+  .search-panel {
+    width: 320px;
+    flex-direction: column;
+  }
+
+  .search-panel label {
+    text-align: left;
+  }
+
+  .search-input {
+    width: 250px;
+    margin: 10px 0;
+  }
+
+  .btn-search {
+    width: 315px;
+    margin: 25px 0 10px;
+  }
+}
+
+@media (max-width: 325px){
+  .search-panel {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    flex-direction: column;
+  }
+
+  .search-panel label {
+    text-align: left;
+  }
+
+  .search-input {
+    width: 220px;
+    margin: 10px 0;
+  }
+
+  .btn-search {
+    width: 284px;
+    padding: 10px 20px !important;
+    margin: 25px 0 10px !important;
+  }
+}

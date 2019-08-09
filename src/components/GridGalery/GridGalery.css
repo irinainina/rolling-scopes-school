@@ -1,0 +1,21 @@
+.ReactGridGallery {
+  display: block;
+  width: 100% !important;
+  min-height: 900px;
+  max-width: 1206px !important;
+}
+
+.ReactGridGallery_tile-bottom-bar {
+  text-align: left;
+}
+
+.ReactGridGallery_tile-bottom-bar span {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+@media (max-width: 570px) {
+  .ReactGridGallery {
+    min-height: 1815px;
+  }
+}
