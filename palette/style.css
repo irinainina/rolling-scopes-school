@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;  
+}
+
+.container {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.menu {
+  margin-bottom: 90px;
+  height: 60px;
+  width: 99vw;
+  padding: 15px 20px 25px;
+  border-top: 1px solid #757575;
+  box-shadow: 0 5px 5px 2px #CECECE;
+}
+
+nav {
+  display: flex;
+  align-content: center;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.menu-icon {
+  margin-right: 40px;
+  background-image: url("../svg/menu.svg");
+}
+
+p.logo {
+  margin: 0;
+  line-height: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dots-icon {
+  background-image: url("../svg/dots.svg");
+}
+
+.tool-container {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.tools {
+  padding: 10px 0;
+  width: 260px;
+  height: 290px;
+  box-shadow: 0 3px 5px 3px #CECECE;
+}
+
+.tool {
+  display: flex;
+  align-items: center;  
+  margin-bottom: 5px;
+  padding: 0 20px;
+  cursor: pointer;
+  user-select: none;   
+}
+
+.palette {
+  margin-bottom: 90px;
+}
+
+.tool-name {
+  margin-left: 35px;
+}
+
+hr {
+  color: #eee;
+  size: 1px;
+  margin: 20px 0 15px;
+}
+
+.tool:nth-child(3) {
+  padding-top: 5px;
+}
+
+.paint .icon {
+  background-image: url("../svg/paint.svg");
+}
+
+.brush .icon {
+  background-image: url("../svg/brush.svg");
+}
+
+.move .icon {
+  background-image: url("../svg/move.svg");
+}
+
+.transform .icon {
+  background-image: url("../svg/transfer.svg");
+}
+
+.colors .icon {
+  border: 1px solid #565656;
+  border-radius: 50%;
+}
+
+.colors .tool:nth-child(1) .icon {
+  background-color: #C4C4C4;
+}
+
+.colors .tool:nth-child(2) .icon {
+  background-color: #41F795;
+}
+
+.colors .tool:nth-child(4) .icon {
+  background-color: #F74141;
+}
+
+.colors .tool:nth-child(5) .icon {
+  background-color: #41B6F7;
+}
+
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  width: 630px;
+  height: 630px;
+  margin-right: 50px;
+}
+
+.block-container {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  background-color: rgb(230, 227, 223, 0.25);
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.15), 1px 1px 5px rgba(255, 255, 255, 0.25);
+}
+
+.block { 
+  width: 200px;
+  height: 200px;
+  background-color: #CFCFCF;  
+  cursor: pointer;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.active {
+  color: #757575;
+  filter: invert(79%) sepia(27%) saturate(7271%) hue-rotate(342deg) brightness(98%) contrast(111%);
+}
+
+.activeColor {
+  color: #757575;
+}

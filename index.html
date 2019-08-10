@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Palette</title>
+  <link rel="stylesheet" href="palette/style.css">
+</head>
+
+<body>
+  <div class="menu">
+    <div class="container">
+      <nav>
+       <div class="menu-icon icon"></div>
+       <p class="logo">CodeJam - Palette</p>
+     </nav>
+   <div class="dots-icon icon"></div>
+    </div>    
+  </div>
+  
+  <div class="container">
+   <div class="tool-container">
+     <div class="palette tools">
+       <div class="paint tool" title="click P">
+         <div class="icon"></div>
+         <p class="tool-name">Paint bucket</p>
+       </div>
+       <div class="brush tool" title="click C">
+         <div class="icon"></div>
+         <p class="tool-name">Choose color</p>
+       </div>
+       <hr>
+       <div class="move tool" title="click M">
+         <div class="icon"></div>
+         <p class="tool-name">Move</p>
+       </div>
+       <div class="transform tool" title="click T">
+         <div class="icon"></div>
+         <p class="tool-name">Transform</p>
+       </div>
+     </div>
+     <div class="colors tools">
+       <div class="tool">
+         <div class="icon" data-code="#C4C4C4" data-color="grey" data-num="first"></div>
+         <p class="tool-name">Current color</p>
+       </div>
+       <div class="tool">
+         <div class="icon" data-code="#41F795" data-color="green" data-num="second"></div>
+         <p class="tool-name">Prev color</p>
+       </div>
+       <hr>
+       <div class="tool">
+         <div class="icon" data-code="#F74141" data-color="red" data-num="third"></div>
+         <p class="tool-name">red</p>
+       </div>
+       <div class="tool">
+         <div class="icon" data-code="#41B6F7" data-color="blue" data-num="fourth"></div>
+         <p class="tool-name">blue</p>
+       </div>
+     </div>
+   </div> 
+   <div class="canvas">
+    <div class="block-container">
+      <div class="block block1" data-class="block1"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block2" data-class="block2"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block3" data-class="block3"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block4" data-class="block4"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block5" data-class="block5"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block6" data-class="block6"></div>
+    </div>
+    <div class="block-container round">
+      <div class="block round block7" data-class="block7"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block8" data-class="block8"></div>
+    </div>
+    <div class="block-container">
+      <div class="block block9" data-class="block9"></div>
+    </div>
+   </div>   
+  </div>
+
+  
+  <script src="palette/script.js"></script>
+
+</body>
+
+</html>
